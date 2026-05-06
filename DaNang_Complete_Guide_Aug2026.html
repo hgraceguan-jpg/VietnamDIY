@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da Nang 4D3N Trip — August 6–9, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#f0f4f8;color:#1a2332;font-size:13px;line-height:1.5;}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero{background:linear-gradient(135deg,#0d3b66 0%,#1565a0 55%,#c62828 100%);color:#fff;padding:32px 48px 26px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:240px;height:240px;background:rgba(255,255,255,.04);border-radius:50%;}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.hero-left h1{font-size:26px;font-weight:900;letter-spacing:-.5px;}
+.hero-left p{font-size:12px;opacity:.75;margin-top:4px;}
+.hero-right{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:12px 18px;text-align:center;min-width:160px;}
+.hero-right .tot-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;opacity:.75;}
+.hero-right .tot-amt{font-size:28px;font-weight:900;line-height:1.1;}
+.hero-right .tot-sub{font-size:10px;opacity:.75;margin-top:2px;}
+
+.trip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;}
+@media(max-width:640px){.trip-grid{grid-template-columns:1fr 1fr;}}
+.trip-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:7px 12px;display:flex;align-items:center;gap:8px;}
+.trip-item .ti-icon{font-size:16px;flex-shrink:0;}
+.trip-item .ti-text{font-size:11px;font-weight:600;line-height:1.3;}
+.trip-item .ti-sub{font-size:10px;opacity:.7;font-weight:400;}
+
+.fx-bar{background:#1565a0;color:#fff;padding:7px 48px;display:flex;align-items:center;gap:16px;font-size:11px;border-bottom:3px solid #fdd835;flex-wrap:wrap;}
+.fx-bar strong{font-size:13px;}
+.fx-warn{background:#fdd835;color:#1a2332;border-radius:5px;padding:2px 10px;font-size:10px;font-weight:800;margin-left:auto;white-space:nowrap;}
+.data-bar{background:#0f766e;color:#fff;padding:5px 48px;font-size:11px;font-weight:600;}
+
+/* ── TABS ────────────────────────────────────────────────── */
+.page{padding:0 48px;}
+@media(max-width:640px){.hero,.page{padding-left:16px;padding-right:16px;}}
+.tabs{display:flex;gap:0;border-bottom:2px solid #e2e8f0;margin:20px 0 0;flex-wrap:wrap;}
+.tab{padding:9px 22px;font-size:12px;font-weight:600;color:#64748b;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:.2s;}
+.tab.active,.tab:hover{color:#0d3b66;border-bottom-color:#0d3b66;background:rgba(21,101,160,.04);}
+.tab-content{display:none;padding:20px 0;}.tab-content.active{display:block;}
+
+/* ── SHARED ──────────────────────────────────────────────── */
+.sec-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#94a3b8;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sec-title::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+
+/* ── COST SUMMARY ────────────────────────────────────────── */
+/* Top 3 Summary Cards */
+.top-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;}
+@media(max-width:600px){.top-cards{grid-template-columns:1fr;}}
+.tcard{background:#fff;border-radius:12px;padding:18px 20px;box-shadow:0 2px 10px rgba(0,0,0,.07);text-align:center;border-top:4px solid #e2e8f0;}
+.tcard.current{border-top-color:#1565a0;}
+.tcard.budget{border-top-color:#16a34a;}
+.tcard.prepare{border-top-color:#c62828;}
+.tcard-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#94a3b8;margin-bottom:4px;}
+.tcard-amt{font-size:32px;font-weight:900;line-height:1;}
+.tcard-sub{font-size:11px;color:#64748b;margin-top:4px;}
+.tcard.current .tcard-amt{color:#1565a0;}
+.tcard.budget .tcard-amt{color:#16a34a;}
+.tcard.prepare .tcard-amt{color:#c62828;}
+
+/* PHP = big, VND = small */
+.php-big{font-size:15px;font-weight:800;color:#0d3b66;}
+.php-big.green{color:#16a34a;}
+.php-big.red{color:#dc2626;}
+.php-big.blue{color:#1565a0;}
+.vnd-sm{font-size:10px;color:#94a3b8;font-weight:400;display:block;margin-top:1px;}
+.php-free{font-size:13px;font-weight:700;color:#16a34a;}
+
+/* Cost Table */
+.ctable{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.ctable th{background:#1a2332;color:#fff;padding:9px 14px;font-size:9px;text-transform:uppercase;letter-spacing:.8px;text-align:left;font-weight:700;}
+.ctable td{padding:9px 14px;border-bottom:1px solid #f1f5f9;vertical-align:top;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable .cat td{background:#f8fafc;font-weight:800;color:#0d3b66;font-size:11px;padding:8px 14px;}
+.ctable .tax td{background:#fef2f2;color:#7f1d1d;}
+.ctable .sub td{background:#e2e8f0;font-weight:800;}
+.ctable .gtot td{background:#0d3b66;color:#fff;}
+.ctable .buf td{background:#fff3cd;color:#856404;font-weight:700;}
+.ctable .fin td{background:#f0fdf4;color:#166534;font-weight:900;}
+.ctable .inc td{background:#f0fdfa;}
+.item-name{font-size:12.5px;font-weight:600;color:#1a2332;}
+.item-note{font-size:10.5px;color:#64748b;margin-top:2px;}
+.save-tag{display:inline-block;background:#dcfce7;color:#166534;border-radius:4px;padding:1px 7px;font-size:10px;font-weight:700;margin-top:3px;}
+
+/* ── ITINERARY ───────────────────────────────────────────── */
+.day-card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:18px;overflow:hidden;}
+.day-hdr{padding:14px 22px;color:#fff;display:flex;align-items:center;gap:14px;}
+.d1h{background:linear-gradient(135deg,#1565a0,#0d3b66);}
+.d2h{background:linear-gradient(135deg,#0f766e,#115e59);}
+.d3h{background:linear-gradient(135deg,#7c3aed,#5b21b6);}
+.d4h{background:linear-gradient(135deg,#c62828,#991b1b);}
+.day-num{font-size:32px;font-weight:900;opacity:.9;line-height:1;}
+.day-meta h3{font-size:14px;font-weight:800;}
+.day-meta p{font-size:11px;opacity:.8;margin-top:2px;}
+.day-zone{margin-left:auto;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:6px 12px;text-align:center;white-space:nowrap;}
+.day-zone .dz-lbl{font-size:9px;font-weight:700;text-transform:uppercase;opacity:.8;}
+.day-zone .dz-amt{font-size:16px;font-weight:900;}
+
+.act{display:grid;grid-template-columns:62px 1fr 140px;gap:10px;padding:9px 18px 9px 22px;border-bottom:1px solid #f8fafc;align-items:start;}
+.act:last-child{border-bottom:none;}
+.act:hover{background:#fafbfc;}
+.act.free{background:#f9fffe;}
+.act.inc{background:#f0fdfa;}
+.act.warn{background:#fffbeb;}
+.act.highlight{background:#fffbeb;border-left:3px solid #f59e0b;}
+.act-time{font-size:11px;font-weight:700;color:#94a3b8;line-height:1.4;padding-top:2px;}
+.act-body .aname{font-size:13px;font-weight:700;color:#1a2332;}
+.act-body .aaddr{font-size:10.5px;color:#1565a0;margin-top:1px;}
+.act-body .anote{font-size:11px;color:#64748b;margin-top:2px;line-height:1.4;}
+.act-body .atrans{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;}
+.tp{border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;display:inline-flex;align-items:center;gap:3px;}
+.tg{background:#dbeafe;color:#1d4ed8;}
+.tb{background:#dcfce7;color:#166534;}
+.tw{background:#f0fdf4;color:#15803d;}
+.ts{background:#f3e8ff;color:#6b21a8;}
+.tk{background:#fef3c7;color:#92400e;}
+.ti{background:#ccfbf1;color:#0f766e;}
+.act-cost{text-align:right;}
+.cost-php{font-size:16px;font-weight:900;color:#0d3b66;display:block;}
+.cost-php.green{color:#15803d;}
+.cost-php.red{color:#c62828;}
+.cost-php.free{color:#15803d;font-size:13px;}
+.cost-php.inc{color:#0f766e;font-size:12px;}
+.cost-vnd{font-size:10px;color:#b0bec5;display:block;margin-top:2px;}
+.cost-note{font-size:10px;color:#94a3b8;display:block;margin-top:1px;}
+
+/* day divider label */
+.cluster-label{background:#f8fafc;border-top:1px solid #e2e8f0;padding:5px 22px;font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.8px;}
+
+/* ── TRANSPORT TABLE ─────────────────────────────────────── */
+.ttable{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.ttable th{background:#1a2332;color:#fff;padding:8px 11px;font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:700;}
+.ttable td{padding:10px 11px;border-bottom:1px solid #f1f5f9;font-size:11px;vertical-align:top;}
+.ttable tr:last-child td{border-bottom:none;}
+.ttable tr:nth-child(even) td{background:#fafbfc;}
+.opt{display:inline-block;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;margin:2px 0;}
+.ob{background:#dcfce7;color:#166534;}
+.om{background:#dbeafe;color:#1d4ed8;}
+.ow{background:#fef3c7;color:#92400e;}
+.on{background:#f1f5f9;color:#94a3b8;}
+.ov{background:#ccfbf1;color:#0f766e;font-size:11px;font-weight:800;}
+.lname{font-weight:700;color:#0d3b66;font-size:12px;}
+.ldist{font-size:10px;color:#94a3b8;margin-top:2px;}
+
+/* ── FOOD ────────────────────────────────────────────────── */
+.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.fcard{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.fcard-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid #f1f5f9;}
+.fitem{border-bottom:1px dashed #f1f5f9;padding:7px 0;}
+.fitem:last-child{border-bottom:none;}
+.fitem-name{font-size:13px;font-weight:700;color:#1a2332;}
+.fitem-where{font-size:10.5px;color:#1565a0;margin-top:1px;}
+.fitem-desc{font-size:11px;color:#64748b;margin-top:2px;line-height:1.4;}
+.fitem-price{float:right;font-size:14px;font-weight:900;color:#c62828;text-align:right;line-height:1.2;}
+.fitem-price small{display:block;font-size:9px;color:#94a3b8;font-weight:400;}
+
+.footer{background:#1a2332;color:rgba(255,255,255,.45);text-align:center;padding:16px 48px;font-size:10px;margin-top:36px;line-height:1.8;}
+a{color:#1565a0;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-left">
+      <div style="font-size:24px;margin-bottom:4px;">🇻🇳</div>
+      <h1>Da Nang DIY Trip · August 6–9, 2026</h1>
+      <p>4 Days / 3 Nights &nbsp;·&nbsp; Solo Traveler &nbsp;·&nbsp; Budget-Smart Strategy &nbsp;·&nbsp; Price Data: May 6, 2026</p>
+    </div>
+    <div class="hero-right">
+      <div class="tot-lbl">Prepare At Least</div>
+      <div class="tot-amt">₱39,499</div>
+      <div class="tot-sub">Budget Strategy · incl. buffer</div>
+    </div>
+  </div>
+
+  <div class="trip-grid">
+    <div class="trip-item">
+      <div class="ti-icon">✈️</div>
+      <div><div class="ti-text">Aug 6 (Thu) · Depart MNL 05:40</div><div class="ti-sub">5J5756 · Arrive DAD 07:40 AM</div></div>
+    </div>
+    <div class="trip-item">
+      <div class="ti-icon">🏖️</div>
+      <div><div class="ti-text">Aug 6 · City Orientation</div><div class="ti-sub">My Khe · Han River · City Circuit</div></div>
+    </div>
+    <div class="trip-item">
+      <div class="ti-icon">🏮</div>
+      <div><div class="ti-text">Aug 7 · Hoi An Day Trip</div><div class="ti-sub">Public Bus · Bicycle · Ancient Town</div></div>
+    </div>
+    <div class="trip-item">
+      <div class="ti-icon">🏔️</div>
+      <div><div class="ti-text">Aug 8 · Ba Na Hills + 🔥 Dragon Bridge</div><div class="ti-sub">Shuttle Bus · Fire Show 9 PM Saturday</div></div>
+    </div>
+    <div class="trip-item">
+      <div class="ti-icon">✈️</div>
+      <div><div class="ti-text">Aug 9 · Free Morning + Departure</div><div class="ti-sub">5J5757 · Depart DAD 22:30</div></div>
+    </div>
+    <div class="trip-item">
+      <div class="ti-icon">🇵🇭</div>
+      <div><div class="ti-text">Filipinos · Visa-Free</div><div class="ti-sub">Up to 30 days · No visa needed</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="fx-bar">
+  <div><div style="font-size:9px;opacity:.65;text-transform:uppercase;letter-spacing:.5px;">2026 Exchange Rate</div>
+  <strong>₱1 = 444 VND &nbsp;|&nbsp; 1,000 VND = ₱2.25 &nbsp;|&nbsp; $1 = ₱57</strong></div>
+  <div style="font-size:10px;font-style:italic;opacity:.8;">PHP = VND ÷ 444 · Source: Exchange-Rates.org + Wise.com</div>
+  <div class="fx-warn">⚠ Verify rate before travel</div>
+</div>
+<div class="data-bar">📅 Price Data: May 6, 2026 &nbsp;·&nbsp; Skyscanner · TripAdvisor · DanangTransfer.vn · TIEZA.gov.ph · HoiAnDayTrip.com</div>
+
+<!-- ═══════════ PAGE ═══════════ -->
+<div class="page">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('summary',this)">💰 Cost Summary</div>
+    <div class="tab" onclick="showTab('itinerary',this)">📅 Itinerary</div>
+    <div class="tab" onclick="showTab('transport',this)">🚗 Transport Guide</div>
+    <div class="tab" onclick="showTab('food',this)">🍜 Food Guide</div>
+  </div>
+
+  <!-- ══ TAB 1: COST SUMMARY ══ -->
+  <div id="tab-summary" class="tab-content active">
+
+    <!-- Top 3 Summary Cards -->
+    <div class="top-cards">
+      <div class="tcard current">
+        <div class="tcard-lbl">Current (All-Grab)</div>
+        <div class="tcard-amt">₱41,780</div>
+        <div class="tcard-sub">Grand total · Grab-based transport</div>
+      </div>
+      <div class="tcard budget">
+        <div class="tcard-lbl">✅ Budget Strategy</div>
+        <div class="tcard-amt">₱37,466</div>
+        <div class="tcard-sub">Bus + Shuttle + Walk · Saves ₱4,314</div>
+      </div>
+      <div class="tcard prepare">
+        <div class="tcard-lbl">Prepare At Least</div>
+        <div class="tcard-amt">₱39,499</div>
+        <div class="tcard-sub">Budget total + ₱2,033 safety buffer</div>
+      </div>
+    </div>
+
+    <!-- Full Breakdown Table -->
+    <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead><tr>
+        <th style="width:38%;">Item</th>
+        <th style="width:12%;">VND</th>
+        <th style="width:16%;">₱ Current</th>
+        <th style="width:16%;">₱ Budget</th>
+        <th>Method / Note</th>
+      </tr></thead>
+      <tbody>
+        <!-- FLIGHTS -->
+        <tr class="cat"><td colspan="5">✈️ &nbsp;FLIGHTS &amp; PHILIPPINE TRAVEL TAX</td></tr>
+        <tr>
+          <td><div class="item-name">Outbound · 5J5756 · MNL → DAD</div><div class="item-note">Aug 6 · 05:40 AM – 07:40 AM · Cebu Pacific · Direct</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big blue">₱10,945.00</span></td>
+          <td><span class="php-big green">₱10,945.00</span></td>
+          <td>Fixed fare · Skyscanner [S1]</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Return · 5J5757 · DAD → MNL</div><div class="item-note">Aug 9 · 10:30 PM – 02:15+1 AM · Cebu Pacific · Direct</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big blue">₱8,165.15</span></td>
+          <td><span class="php-big green">₱8,165.15</span></td>
+          <td>Fixed fare · Skyscanner [S1]</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Check-in Baggage (optional · 20 kg/way)</div><div class="item-note">₱3,000 if needed · Set to 0 for carry-on only</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big blue">₱0</span></td>
+          <td><span class="php-big green">₱0</span></td>
+          <td>Carry-on only (7 kg free)</td>
+        </tr>
+        <tr class="tax">
+          <td><div class="item-name">🇵🇭 Philippine Travel Tax — Economy Class</div><div class="item-note"><strong>MANDATORY · NOT included in ticket price</strong> · Pay at TIEZA counter or add during booking</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big red">₱1,620.00</span></td>
+          <td><span class="php-big red">₱1,620.00</span></td>
+          <td>TIEZA.gov.ph [S14]</td>
+        </tr>
+        <tr class="tax">
+          <td><div class="item-name">Online Processing Fee</div><div class="item-note">If paid via Cebu Pacific / TIEZA online · Free at airport counter</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big red">₱50.00</span></td>
+          <td><span class="php-big red">₱50.00</span></td>
+          <td>Optional · saves airport queue</td>
+        </tr>
+        <tr class="sub"><td colspan="2">FLIGHTS SUBTOTAL</td><td><span class="php-big blue">₱20,780.15</span></td><td><span class="php-big green">₱20,780.15</span></td><td>—</td></tr>
+
+        <!-- HOTEL -->
+        <tr class="cat"><td colspan="5">🏨 &nbsp;HOTEL — 3 Nights with Daily Breakfast</td></tr>
+        <tr>
+          <td><div class="item-name">3★ Da Nang Boutique Hotel · ~$28/night · 3 nights</div><div class="item-note">Breakfast included daily · Central location · My Khe Beach area</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big blue">₱10,307.31</span></td>
+          <td><span class="php-big green">₱10,307.31</span></td>
+          <td>TripAdvisor [S3]</td>
+        </tr>
+        <tr class="sub"><td colspan="2">HOTEL SUBTOTAL</td><td><span class="php-big blue">₱10,307.31</span></td><td><span class="php-big green">₱10,307.31</span></td><td>—</td></tr>
+
+        <!-- TRANSPORT -->
+        <tr class="cat"><td colspan="5">🚗 &nbsp;TRANSPORT / LAND FARE</td></tr>
+        <tr>
+          <td><div class="item-name">T1 · Airport (DAD) → Hotel · Day 1 · 08:00</div><div class="item-note">3 km · Grab Car · +30,000 VND cash surcharge to driver</div></td>
+          <td><span class="vnd-sm">160,000 VND</span></td>
+          <td><span class="php-big blue">₱359.71</span></td>
+          <td><span class="php-big green">₱359.71</span></td>
+          <td>Grab Car · only safe option at arrival</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T2 · Hotel ↔ Ba Na Hills (Round Trip) · Day 3</div><div class="item-note">30 km · Grab = 2 rides, return unreliable · Shuttle = guaranteed</div></td>
+          <td><span class="vnd-sm">200,000 VND RT</span></td>
+          <td><span class="php-big blue">₱2,017.92</span></td>
+          <td><span class="php-big green">₱449.10</span><div class="save-tag">Saves ₱1,569</div></td>
+          <td>🚌 Shared Shuttle RT · pre-book via Klook</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T3 · Hotel → Hoi An · Day 2 · 06:30</div><div class="item-note">28–30 km · Bus LK02 every 30–60 min from 5:45 AM</div></td>
+          <td><span class="vnd-sm">30,000 VND</span></td>
+          <td><span class="php-big blue">₱930.49</span></td>
+          <td><span class="php-big green">₱67.42</span><div class="save-tag">Saves ₱863</div></td>
+          <td>🚌 Public Bus LK02</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T4 · Bicycle Rental · Hoi An (half-day) · Day 2</div><div class="item-note">Canaan Island 3.5 km + old town loop · flat terrain</div></td>
+          <td><span class="vnd-sm">45,000 VND</span></td>
+          <td><span class="php-big blue">₱0</span></td>
+          <td><span class="php-big green">₱101.10</span></td>
+          <td>🚲 Bicycle rental · replaces multiple Grabs</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T5 · Hoi An → Da Nang · Day 2 · 12:45</div><div class="item-note">28–30 km · same route back · last bus ~6 PM</div></td>
+          <td><span class="vnd-sm">30,000 VND</span></td>
+          <td><span class="php-big blue">₱778.02</span></td>
+          <td><span class="php-big green">₱67.42</span><div class="save-tag">Saves ₱711</div></td>
+          <td>🚌 Public Bus LK02</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T6 · Da Nang City Circuit · Day 1 &amp; 2</div><div class="item-note">Han Market → Pink Church → APEC → Love Bridge → Dragon Bridge · 1.8 km total</div></td>
+          <td><span class="vnd-sm">0 VND</span></td>
+          <td><span class="php-big blue">₱112.20</span></td>
+          <td><span class="php-big green">₱0</span><div class="save-tag">FREE — Walk!</div></td>
+          <td>🚶 Walk entire circuit · 25 min · ₱0</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T7 · City Grab Bike Hops (2 rides) · Day 2</div><div class="item-note">Bus drop-off → Han Market + Dragon Bridge → hotel</div></td>
+          <td><span class="vnd-sm">50,000 VND</span></td>
+          <td><span class="php-big blue">₱112.20</span></td>
+          <td><span class="php-big green">₱112.20</span></td>
+          <td>🏍 Grab Bike · 15,000–25,000 VND/hop</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">T8 · Hotel → Airport · Day 4 · 20:00</div><div class="item-note">3–5 km · no surcharge on outbound trip · depart by 8 PM</div></td>
+          <td><span class="vnd-sm">95,000 VND</span></td>
+          <td><span class="php-big blue">₱215.25</span></td>
+          <td><span class="php-big green">₱215.25</span></td>
+          <td>🚗 Grab Car · only option at night w/ luggage</td>
+        </tr>
+        <tr class="sub"><td colspan="2">LAND FARE SUBTOTAL</td><td><span class="php-big blue">₱4,525.79</span></td><td><span class="php-big green">₱1,372.20</span></td><td style="color:#16a34a;font-weight:700;">Saves ₱3,153 with Budget Strategy</td></tr>
+
+        <!-- ENTRANCE FEES -->
+        <tr class="cat"><td colspan="5">🎡 &nbsp;ENTRANCE FEES &amp; ACTIVITIES</td></tr>
+        <tr>
+          <td><div class="item-name">Sun World Ba Na Hills · WITH Buffet Lunch</div><div class="item-note">Cable Car + Golden Bridge + French Village + Fantasy Park + DEbay Buffet · Jan–Dec 2026</div></td>
+          <td><span class="vnd-sm">1,300,000 VND</span></td>
+          <td><span class="php-big blue">₱2,814.09</span></td>
+          <td><span class="php-big green">₱2,814.09</span></td>
+          <td>Pre-book Klook · HoiAnDayTrip.com [S10]</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hoi An Ancient Town Ticket · 5 heritage sites</div><div class="item-note">Japanese Bridge · Phuc Kien · Tan Ky Old House · Walking streets = FREE</div></td>
+          <td><span class="vnd-sm">120,000 VND</span></td>
+          <td><span class="php-big blue">₱291.84</span></td>
+          <td><span class="php-big green">₱291.84</span></td>
+          <td>Buy at gate · CulturePhamTravel [S11]</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Canaan Island Basket Boat Ride</div><div class="item-note">~30 min · ⚠ Walk-up may quote 500,000 VND (inflated) · Klook = guaranteed fair rate</div></td>
+          <td><span class="vnd-sm">~150,000 VND</span></td>
+          <td><span class="php-big blue">₱212.00</span></td>
+          <td><span class="php-big green">₱212.00</span></td>
+          <td>Book Klook · HoiAnDayTrip.com [S12]</td>
+        </tr>
+        <tr class="inc">
+          <td colspan="2"><div class="item-name">Son Tra/Lady Buddha · Dragon Bridge · Love Bridge · APEC Park · Pink Church · Han Market · My Khe Beach</div></td>
+          <td><span class="php-free">FREE</span></td><td><span class="php-free">FREE</span></td>
+          <td>All outdoor / free entry</td>
+        </tr>
+        <tr class="sub"><td colspan="2">ENTRANCE FEES SUBTOTAL</td><td><span class="php-big blue">₱3,317.93</span></td><td><span class="php-big green">₱3,317.93</span></td><td>—</td></tr>
+
+        <!-- MEALS -->
+        <tr class="cat"><td colspan="5">🍜 &nbsp;MEALS · Hotel Breakfast (3 days) + Ba Na Buffet Lunch = Included</td></tr>
+        <tr class="inc"><td colspan="2"><div class="item-name">✓ Hotel Breakfast (Days 1–3) + Ba Na Hills Buffet Lunch (Day 3)</div></td>
+          <td><span class="php-free">Included</span></td><td><span class="php-free">Included</span></td><td>Hotel rate + Ba Na Hills ticket</td></tr>
+        <tr>
+          <td><div class="item-name">Day 1 Dinner · Phở / Bún Chả Cá</div><div class="item-note">Phở Thìn style · near hotel area</div></td>
+          <td><span class="vnd-sm">120,000 VND</span></td>
+          <td><span class="php-big blue">₱269.06</span></td>
+          <td><span class="php-big green">₱269.06</span></td>
+          <td>Local eateries near My Khe Beach</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Day 2 Dinner · Lẩu (Hotpot)</div><div class="item-note">Vietnamese hotpot · 250,000 VND est.</div></td>
+          <td><span class="vnd-sm">250,000 VND</span></td>
+          <td><span class="php-big blue">₱560.54</span></td>
+          <td><span class="php-big green">₱560.54</span></td>
+          <td>Lẩu Thái hotpot resto</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Day 3 Lunch · White Rose + Cao Lau + Bánh Mì Phượng</div><div class="item-note">White Rose Restaurant · 533 Hai Bà Trưng + 2B Phan Châu Trinh, Hội An</div></td>
+          <td><span class="vnd-sm">200,000 VND</span></td>
+          <td><span class="php-big blue">₱448.43</span></td>
+          <td><span class="php-big green">₱448.43</span></td>
+          <td>White Rose Resto + Bánh Mì Phượng</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Day 4 Farewell Dinner · Airport Area</div><div class="item-note">Light pre-flight meal recommended</div></td>
+          <td><span class="vnd-sm">200,000 VND</span></td>
+          <td><span class="php-big blue">₱448.43</span></td>
+          <td><span class="php-big green">₱448.43</span></td>
+          <td>Airport area restaurant</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Drinks &amp; Snacks · All 4 Days</div><div class="item-note">Iced coffee ~30,000 VND · Coconut water ~20,000 VND · ~185,000 VND total</div></td>
+          <td><span class="vnd-sm">185,000 VND</span></td>
+          <td><span class="php-big blue">₱414.80</span></td>
+          <td><span class="php-big green">₱414.80</span></td>
+          <td>Street carts everywhere</td>
+        </tr>
+        <tr class="sub"><td colspan="2">MEALS SUBTOTAL</td><td><span class="php-big blue">₱2,141.26</span></td><td><span class="php-big green">₱2,141.26</span></td><td>—</td></tr>
+
+        <!-- OTHER -->
+        <tr class="cat"><td colspan="5">🛡️ &nbsp;OTHER</td></tr>
+        <tr>
+          <td><div class="item-name">Travel Insurance</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-big blue">₱700.00</span></td>
+          <td><span class="php-big green">₱700.00</span></td>
+          <td>Recommended for all international travel</td>
+        </tr>
+        <tr class="inc">
+          <td><div class="item-name">🇻🇳 Vietnam Visa</div><div class="item-note">PH-Vietnam visa-free agreement (2023) · up to 30 days</div></td>
+          <td class="vnd-sm">—</td>
+          <td><span class="php-free">FREE</span></td>
+          <td><span class="php-free">FREE</span></td>
+          <td>No visa needed</td>
+        </tr>
+
+        <!-- TOTALS -->
+        <tr class="gtot">
+          <td colspan="2" style="font-size:14px;font-weight:900;">🎯 &nbsp;GRAND TOTAL — All In</td>
+          <td style="text-align:right;"><span style="font-size:20px;font-weight:900;color:#fff;">₱41,779.78</span></td>
+          <td style="text-align:right;"><span style="font-size:20px;font-weight:900;color:#86efac;">₱37,466.10</span></td>
+          <td style="color:#86efac;font-weight:700;">Budget saves ₱4,313</td>
+        </tr>
+        <tr class="buf">
+          <td colspan="2">⚠ &nbsp;Safety Buffer (surge fares, FX shift, tips, pasalubong)</td>
+          <td style="text-align:right;"><span class="php-big" style="color:#856404;">+₱3,000</span></td>
+          <td style="text-align:right;"><span class="php-big" style="color:#856404;">+₱2,033</span></td>
+          <td>Adjust as needed</td>
+        </tr>
+        <tr class="fin">
+          <td colspan="2" style="font-size:14px;font-weight:900;">✅ &nbsp;TOTAL TO PREPARE</td>
+          <td style="text-align:right;"><span style="font-size:22px;font-weight:900;color:#166534;">₱44,780</span></td>
+          <td style="text-align:right;"><span style="font-size:22px;font-weight:900;color:#166534;">₱39,499</span></td>
+          <td style="color:#166534;font-weight:800;">Budget saves ₱5,281 total</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ══ TAB 2: ITINERARY ══ -->
+  <div id="tab-itinerary" class="tab-content">
+
+    <!-- DAY 1 -->
+    <div class="day-card">
+      <div class="day-hdr d1h">
+        <div class="day-num">1</div>
+        <div class="day-meta">
+          <h3>Thursday, August 6 — Arrival 07:40 AM · City Orientation</h3>
+          <p>My Khe Beach · Han River · Han Market · Pink Church · APEC Park · Love Bridge · Dragon Bridge</p>
+        </div>
+        <div class="day-zone"><div class="dz-lbl">Day Budget</div><div class="dz-amt">~₱1,200</div></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster A — My Khe Beach Area (walking distance from hotel)</div>
+
+      <div class="act">
+        <div class="act-time">05:40<br>MNL</div>
+        <div class="act-body">
+          <div class="aname">✈️ Depart NAIA · Cebu Pacific 5J5756</div>
+          <div class="aaddr">NAIA Terminal 3 · Check in 3 hrs early at 02:40 AM</div>
+          <div class="anote">Pay ₱1,620 Philippine Travel Tax at TIEZA counter before check-in (or add during online booking +₱50 fee). 7 kg carry-on included — no check-in bag needed for 4 days.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php blue">₱20,780</span><span class="cost-vnd">Flights + Travel Tax</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">07:40<br>DAD</div>
+        <div class="act-body">
+          <div class="aname">🛬 Arrive Da Nang Airport (DAD)</div>
+          <div class="aaddr">Da Nang International Airport · 3 km to hotel area</div>
+          <div class="anote">Immigration: No visa needed for Filipinos (30-day visa-free). Collect bags, exit arrivals hall. Open Grab app outside — do not follow taxi touts inside the terminal.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">08:00</div>
+        <div class="act-body">
+          <div class="aname">🚗 Grab Car → Hotel · Drop Bags</div>
+          <div class="aaddr">My Khe Beach hotel area · 3 km · 10–15 min</div>
+          <div class="anote">Too early to check in (2 PM standard). Store bags, get map, ask front desk to book Ba Na Hills shuttle for Day 3 (Saturday pickup 07:30 AM).</div>
+          <div class="atrans">
+            <span class="tp tg">🚗 Grab Car · 160,000 VND · 10–15 min</span>
+            <span class="tp" style="background:#fef2f2;color:#c62828;font-size:10px;">⚠ +30,000 VND airport surcharge — cash to driver</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱360</span><span class="cost-vnd">160,000 VND</span><span class="cost-note">+30k surcharge</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">08:30</div>
+        <div class="act-body">
+          <div class="aname">🏖️ My Khe Beach — Morning Walk</div>
+          <div class="aaddr">Bãi Biển Mỹ Khê · 200 m from hotel · 2 min walk</div>
+          <div class="anote">One of Asia's most beautiful urban beaches — 30 km of white sand. Morning breeze, early swimmers, coconut vendors (20,000 VND). Refresh after the overnight flight.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk · 200 m · 2 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">09:30</div>
+        <div class="act-body">
+          <div class="aname">🍜 Brunch — Bún Chả Cá (Fish Cake Noodle Soup)</div>
+          <div class="aaddr">Nam Danh · 78 Trần Quốc Toản, Mỹ Khê · ~500 m walk · 6 min</div>
+          <div class="anote">Da Nang's signature dish: fresh fish cakes, tomato broth, vermicelli, fresh herbs, rice crackers. 35,000–45,000 VND + iced coffee = ~70,000 VND total. Open all day.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from beach · 500 m · 6 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱269</span><span class="cost-vnd">~120,000 VND</span></div>
+      </div>
+
+      <div class="act inc">
+        <div class="act-time">11:00</div>
+        <div class="act-body">
+          <div class="aname">🏨 Hotel Check-In + Rest (Strongly Recommended)</div>
+          <div class="aaddr">Your hotel · 2 PM standard check-in · rest 1.5–2 hrs</div>
+          <div class="anote">You woke up at ~3 AM for the flight. A proper nap now means you'll enjoy the evening fully. While resting: confirm Ba Na Hills shuttle booking for tomorrow morning!</div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span><span class="cost-vnd">Hotel rate</span></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster B — Han River / City Center (all within 1.8 km walking circuit)</div>
+
+      <div class="act free">
+        <div class="act-time">15:00</div>
+        <div class="act-body">
+          <div class="aname">🛍️ Han Market (Chợ Hàn) — Pasalubong</div>
+          <div class="aaddr">119 Trần Phú, Hải Châu · 4.5 km from hotel · 10 min Grab Bike</div>
+          <div class="anote">3-floor local market. Best buys: G7 drip coffee packs (50,000–80,000 VND/box), dried mango, pho spice kits, lacquerware. Haggling expected — start at 60%. ⚠ Budget ₱500–₱1,500 extra for pasalubong (not in this plan's total).</div>
+          <div class="atrans">
+            <span class="tp tk">🏍 Grab Bike · 20,000–30,000 VND · 10 min</span>
+            <span class="tp tw">🚶 Walk · 4.5 km · 35–40 min · FREE</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE entry</span><span class="cost-note">Shopping extra</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">16:00</div>
+        <div class="act-body">
+          <div class="aname">⛪ Pink Church (Da Nang Cathedral)</div>
+          <div class="aaddr">156 Trần Phú, Hải Châu · 0.3 km from Han Market · 3–4 min walk</div>
+          <div class="anote">Iconic bubblegum-pink Gothic cathedral (1923). Most photogenic building in Da Nang. Respectful entry during non-mass hours. Best angle from across the street.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from Han Market · 0.3 km · 3–4 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">16:15</div>
+        <div class="act-body">
+          <div class="aname">🏛️ APEC Park → Love Bridge → Dragon Bridge</div>
+          <div class="aaddr">Bạch Đằng riverside · 0.7 km from Pink Church · then 0.5 km → 0.3 km</div>
+          <div class="anote">Riverside walk: APEC sculpture park → Love Bridge (add a padlock!) → Dragon Bridge evening photos. <strong>Full circuit from Han Market: 1.8 km, ~25 min total walking, ₱0.</strong></div>
+          <div class="atrans"><span class="tp tw">🚶 Walk · Pink Church→APEC: 0.7 km, 8 min · APEC→Love Bridge: 0.5 km, 6 min · Love Bridge→Dragon Bridge: 0.3 km, 4 min</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">ALL FREE</span><span class="cost-vnd">1.8 km · 25 min walk</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">18:30</div>
+        <div class="act-body">
+          <div class="aname">🍜 Day 1 Dinner — Local Pho/Bún Chả Cá</div>
+          <div class="aaddr">Near Dragon Bridge / Han River area</div>
+          <div class="anote">Eat near the bridge. Mì Quảng (turmeric noodles, 25,000–35,000 VND), Bún Bò Huế, or fresh seafood stalls along Bạch Đằng. Budget ~120,000 VND with drinks.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk near Dragon Bridge area · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱269</span><span class="cost-vnd">~120,000 VND</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">19:30</div>
+        <div class="act-body">
+          <div class="aname">🏨 Return to Hotel — Early Rest</div>
+          <div class="aaddr">Your hotel · 4–4.5 km from Han River · 10 min Grab Bike</div>
+          <div class="anote">Tomorrow's Ba Na Hills shuttle leaves at 07:30 AM — early breakfast at 06:30 AM. Good rest tonight is essential.</div>
+          <div class="atrans"><span class="tp tk">🏍 Grab Bike · 20,000–30,000 VND · 10 min</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱56</span><span class="cost-vnd">~25,000 VND</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-card">
+      <div class="day-hdr d2h">
+        <div class="day-num">2</div>
+        <div class="day-meta">
+          <h3>Friday, August 7 — Hoi An Day Trip (All Day in Hoi An)</h3>
+          <p>Public Bus · Bicycle · Canaan Island · Ancient Town · Cao Lau · White Rose · Bánh Mì Phượng</p>
+        </div>
+        <div class="day-zone"><div class="dz-lbl">Day Budget</div><div class="dz-amt">~₱1,780</div></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster A — Da Nang to Hoi An (Public Bus · 75–90 min · ₱68 each way)</div>
+
+      <div class="act inc">
+        <div class="act-time">06:00</div>
+        <div class="act-body">
+          <div class="aname">🏨 Hotel Breakfast (Included)</div>
+          <div class="aaddr">Your hotel · Eat full — next meal at noon in Hoi An</div>
+          <div class="anote">Comfortable walking shoes — you'll walk 5–6 km today. Pack a small water bottle. Bus departs at 06:30 AM.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">06:30</div>
+        <div class="act-body">
+          <div class="aname">🚌 Public Bus LK02 → Hoi An</div>
+          <div class="aaddr">Bus stop near Da Nang Bus Station · Trần Hưng Đạo / Lý Thường Kiệt · ask hotel for nearest stop</div>
+          <div class="anote">Pay conductor 20,000–30,000 VND cash (exact change). Tell conductor "Hội An market please." Every 30–60 min from 5:45 AM. Alight at Hội An market.</div>
+          <div class="atrans">
+            <span class="tp tb">🚌 Public Bus LK02 · 20,000–30,000 VND ≈ ₱68 · 75–90 min ✅ BUDGET</span>
+            <span class="tp tg">🚗 Grab · 350,000–400,000 VND ≈ ₱899 · 40 min</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php green">₱68</span><span class="cost-vnd">30,000 VND</span><span class="cost-note">saves ₱831 vs Grab</span></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster B — Canaan Island Area (3.5 km from Hoi An market · 12–15 min by bicycle)</div>
+
+      <div class="act">
+        <div class="act-time">08:00</div>
+        <div class="act-body">
+          <div class="aname">🚲 Rent Bicycle near Hoi An Market</div>
+          <div class="aaddr">Bicycle shops · Trần Phú Street · look for bikes outside shops</div>
+          <div class="anote">40,000–50,000 VND half-day. Lock provided. Covers Canaan Island (3.5 km cycle) + old town loop. Return by 12:30 PM for bus back.</div>
+          <div class="atrans"><span class="tp tb">🚲 Bicycle · 40,000–50,000 VND ≈ ₱101 half-day ✅ BUDGET vs e-cart ₱1,125/hr</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php green">₱101</span><span class="cost-vnd">45,000 VND / half-day</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">08:15</div>
+        <div class="act-body">
+          <div class="aname">🛶 Canaan Island — Coconut Basket Boat</div>
+          <div class="aaddr">Coconut forest · 3.5 km from market by bicycle · Follow "Basket Boat" signs · 12–15 min cycle</div>
+          <div class="anote">~30 min ride through coconut palm waterway. Spinning trick at end — tip 50,000 VND (optional). ⚠ Vendors may quote 500,000 VND (inflated!). Fair rate: 90,000–150,000 VND. Book Klook for guaranteed ₱212.</div>
+          <div class="atrans"><span class="tp tb">🚲 Cycle from rental shop · 3.5 km · 12–15 min · ₱0 (on rented bike)</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱212</span><span class="cost-vnd">~150,000 VND · Klook</span></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster C — Hoi An Ancient Town (all within 1 km walking · compact and flat)</div>
+
+      <div class="act">
+        <div class="act-time">09:30</div>
+        <div class="act-body">
+          <div class="aname">🏮 Hoi An Ancient Town — Heritage Walk</div>
+          <div class="aaddr">Old Town center · Trần Phú, Nguyễn Thái Học, Bạch Đằng Streets · 4 km cycle from Canaan Island</div>
+          <div class="anote">Buy ticket (120,000 VND = 5 heritage sites). Walking streets and taking photos is always FREE — ticket only needed for entering buildings.</div>
+          <div class="atrans"><span class="tp tb">🚲 Cycle from Canaan Island · 4 km · 15 min · FREE (on rented bike)</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱270</span><span class="cost-vnd">120,000 VND</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">09:45</div>
+        <div class="act-body">
+          <div class="aname">🌉 Japanese Covered Bridge → Phuc Kien Assembly Hall → Tan Ky Old House</div>
+          <div class="aaddr">Japanese Bridge: Nguyễn Thị Minh Khai · Phuc Kien: 46 Trần Phú (0.5 km, 6 min) · Tan Ky: 101 Nguyễn Thái Học (0.3 km, 4 min)</div>
+          <div class="anote">All 3 within a 1 km walking loop. Japanese Bridge: most iconic shot (9 AM = best light). Phuc Kien: stunning 1697 Chinese community hall with incense and gold carvings. Tan Ky: 200-year-old merchant house, owners still live here!</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk entire circuit · ~1 km total · 15–20 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Ticket incl.</span><span class="cost-vnd">All 3 sites covered</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">11:00</div>
+        <div class="act-body">
+          <div class="aname">📸 Wander Old Town Alleys + Thu Bon Riverside</div>
+          <div class="aaddr">Lê Lợi, old town alleyways, Bạch Đằng riverside</div>
+          <div class="anote">Lantern shops, silk tailors, art galleries, local cafés. Walk along Thu Bon riverside for beautiful morning light photos. The magic of Hoi An is in the wandering — no agenda needed.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk everywhere · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE</span></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster D — Hoi An Food Street (0.3–0.4 km apart · 4–5 min walk between spots)</div>
+
+      <div class="act">
+        <div class="act-time">11:30</div>
+        <div class="act-body">
+          <div class="aname">🍜 Cao Lầu · Hoi An Signature Noodle</div>
+          <div class="aaddr">Thanh Cao Lau · 26 Thái Phiên St · 0.3 km from old town · 4 min walk</div>
+          <div class="anote">Only authentic in Hoi An — uses water from Cham Island wells. Thick rice noodles, char siu pork, bean sprouts, rice crackers. 25,000–35,000 VND per bowl.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from old town · 0.3 km · 4 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱68</span><span class="cost-vnd">~30,000 VND</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">12:05</div>
+        <div class="act-body">
+          <div class="aname">🥖 Bánh Mì Phượng · World's Best Bánh Mì</div>
+          <div class="aaddr">2B Phan Châu Trinh Street · 0.4 km from Thanh Cao Lau · 5 min walk</div>
+          <div class="anote">Anthony Bourdain: "the best sandwich in the world." Always a queue — always worth it. 25,000–35,000 VND. Order the classic.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from Cao Lau spot · 0.4 km · 5 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱68</span><span class="cost-vnd">~30,000 VND</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">12:45</div>
+        <div class="act-body">
+          <div class="aname">🚲 Return Bicycle + Public Bus Back to Da Nang</div>
+          <div class="aaddr">Return bike to shop · walk 2 min to Hội An market bus stop · board LK02 toward Da Nang</div>
+          <div class="anote">Pay 20,000–30,000 VND cash. Arrive Da Nang ~2:30 PM. Alight near Han Market for dinner and relaxation.</div>
+          <div class="atrans">
+            <span class="tp tb">🚌 Public Bus LK02 · 30,000 VND ≈ ₱68 · 75–90 min ✅ BUDGET</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php green">₱68</span><span class="cost-vnd">30,000 VND</span><span class="cost-note">saves ₱711 vs Grab</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">19:00</div>
+        <div class="act-body">
+          <div class="aname">🍲 Day 2 Dinner — Lẩu (Vietnamese Hotpot)</div>
+          <div class="aaddr">Lẩu Thái hotpot restaurant · near hotel · ask front desk</div>
+          <div class="anote">Perfect after a full walking day. Shared pot, dip-your-own meats and vegetables. 200,000–250,000 VND per person with drinks.</div>
+          <div class="atrans">
+            <span class="tp tk">🏍 Grab Bike from arrival area · 15,000–25,000 VND · 8–10 min</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱561</span><span class="cost-vnd">~250,000 VND</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card">
+      <div class="day-hdr d3h">
+        <div class="day-num">3</div>
+        <div class="day-meta">
+          <h3>Saturday, August 8 — Sun World Ba Na Hills · Dragon Bridge 🔥 9 PM</h3>
+          <p>Shared Shuttle · Golden Bridge · French Village · Fantasy Park · Buffet Lunch · Fire Show</p>
+        </div>
+        <div class="day-zone"><div class="dz-lbl">Day Budget</div><div class="dz-amt">~₱3,400</div></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster A — Ba Na Hills Complex (ALL activities within the park · shuttle handles transport)</div>
+
+      <div class="act inc">
+        <div class="act-time">06:30</div>
+        <div class="act-body">
+          <div class="aname">🏨 Hotel Breakfast (Included) — Eat Well!</div>
+          <div class="aaddr">Your hotel · shuttle pickup at 07:30 AM</div>
+          <div class="anote">Wear layers — Ba Na Hills summit is 15–18°C year-round. Pack a light jacket. Your Ba Na Hills buffet lunch is already included in the ticket.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">07:30</div>
+        <div class="act-body">
+          <div class="aname">🚌 Shared Shuttle Bus → Ba Na Hills (Round Trip)</div>
+          <div class="aaddr">Hotel pickup point · confirm exact spot when booking · 30 km west · 50–60 min</div>
+          <div class="anote">Pre-book via Klook or hotel desk the NIGHT BEFORE. Returns at 15:30. Far more reliable than Grab — Grab availability at remote Ba Na Hills on the way back is unpredictable.</div>
+          <div class="atrans">
+            <span class="tp ts">🚌 Shared Shuttle RT · 170,000–200,000 VND ≈ ₱449 · 50–60 min ✅ BUDGET</span>
+            <span class="tp tg">🚗 Grab × 2 one-way · ~900,000 VND ≈ ₱2,018 · risky return</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php green">₱449</span><span class="cost-vnd">200,000 VND RT</span><span class="cost-note">saves ₱1,569!</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">08:30</div>
+        <div class="act-body">
+          <div class="aname">🎫 Ba Na Hills Entrance · Ticket</div>
+          <div class="aaddr">Sun World Ba Na Hills entrance gate</div>
+          <div class="anote">1,300,000 VND covers: cable car (unlimited) + Golden Bridge + French Village + Fantasy Park + DEbay buffet lunch. 3-day validity.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱2,814</span><span class="cost-vnd">1,300,000 VND</span></div>
+      </div>
+
+      <div class="act inc">
+        <div class="act-time">09:00</div>
+        <div class="act-body">
+          <div class="aname">🚡 Morin Cable Car — Base to Summit</div>
+          <div class="aaddr">Base station → French Village summit · 5.8 km aerial · 20 min ride</div>
+          <div class="anote">World's longest single-wire cable car. Cloud forests, mountain mist, Da Nang coastline below. Go early before clouds thicken. Ride it multiple times — included!</div>
+          <div class="atrans"><span class="tp ti">🎟 Included in ticket · 5.8 km · 20 min</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">09:30</div>
+        <div class="act-body">
+          <div class="aname">🌉 Golden Bridge + Giant Stone Hands</div>
+          <div class="aaddr">Level 1 ridge · 0.3 km from cable car station · 5 min walk</div>
+          <div class="anote">Vietnam's most-photographed attraction. 150m bridge held by two giant mossy stone hands. Best light: 9–10 AM. Walk the full length both ways. Allow 45 min for photos.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from cable car · 0.3 km · 5 min · FREE (included)</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">10:30</div>
+        <div class="act-body">
+          <div class="aname">🏰 French Village + DEbay Wine Cellar</div>
+          <div class="aaddr">Summit complex · 0.5 km from Golden Bridge · 8–10 min walk</div>
+          <div class="anote">Cobblestone streets, European architecture, flower gardens, underground wine cellar with free rice wine samples. Street performers throughout. Allow 60–90 min.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from Golden Bridge · 0.5 km · 8–10 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act inc">
+        <div class="act-time">12:00</div>
+        <div class="act-body">
+          <div class="aname">🍽️ DEbay Buffet Lunch</div>
+          <div class="aaddr">DEbay Restaurant · inside French Village · 0.1 km · 2 min walk</div>
+          <div class="anote">Massive spread — Vietnamese, Asian and Western dishes, salads, desserts. INCLUDED in ticket. Go at noon to beat the 12:30 rush. This is a full restaurant buffet worth ~₱500 on its own.</div>
+          <div class="atrans"><span class="tp ti">🎟 Included in ticket · 0.1 km · 2 min walk</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act inc">
+        <div class="act-time">13:30</div>
+        <div class="act-body">
+          <div class="aname">🎮 Fantasy Park (Underground Theme Park)</div>
+          <div class="aaddr">Fantasy Park · elevator from French Village · 0.2 km · 3 min walk</div>
+          <div class="anote">Drop tower, 4D cinema, wax museum, virtual reality, alpine coaster (all included). Alpine Coaster is extra: ~50,000–100,000 VND but highly recommended! Set a budget for premium rides.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk · 0.2 km · 3 min · FREE (included)</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span><span class="cost-vnd">+extras optional</span></div>
+      </div>
+
+      <div class="act inc">
+        <div class="act-time">15:30</div>
+        <div class="act-body">
+          <div class="aname">🚌 Shuttle Bus Return → Da Nang</div>
+          <div class="aaddr">Same pickup point · arrive Da Nang ~16:30–17:00</div>
+          <div class="anote">Be at pickup point 10 min early. Included in RT shuttle.</div>
+          <div class="atrans"><span class="tp ti">🎟 Included in RT shuttle · 30 km · 50–60 min</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">RT incl.</span></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster B — Dragon Bridge Area (hotel area · 3–4 km from hotel · Grab Bike or walk)</div>
+
+      <div class="act free">
+        <div class="act-time">18:30</div>
+        <div class="act-body">
+          <div class="aname">🌅 My Khe Beach — Sunset Walk</div>
+          <div class="aaddr">Bãi Biển Mỹ Khê · 200 m from hotel · 2 min walk</div>
+          <div class="anote">August Da Nang sunsets are spectacular — orange and pink across the South China Sea. Fresh coconut from beach vendors (20,000 VND). Rest before the fire show.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk · 200 m · 2 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">19:30</div>
+        <div class="act-body">
+          <div class="aname">🍜 Dinner — Near Dragon Bridge Area</div>
+          <div class="aaddr">Bạch Đằng / Trần Phú area near Dragon Bridge</div>
+          <div class="anote">Eat near the bridge so you can walk to the 9 PM show. Mì Quảng, Bún Bò Huế, or grilled seafood. ~150,000–200,000 VND with drinks.</div>
+          <div class="atrans">
+            <span class="tp tk">🏍 Grab Bike · 20,000–30,000 VND · 8–10 min</span>
+            <span class="tp tw">🚶 Walk · 3–4 km · 25–30 min · FREE</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱448</span><span class="cost-vnd">~200,000 VND</span></div>
+      </div>
+
+      <div class="act highlight">
+        <div class="act-time" style="color:#c62828;font-weight:900;">21:00<br>⭐</div>
+        <div class="act-body">
+          <div class="aname" style="color:#c62828;font-size:14px;">🔥 Dragon Bridge Fire &amp; Water Show — 9:00 PM Sharp</div>
+          <div class="aaddr">Cầu Rồng · Trần Hưng Đạo Street · Every Saturday &amp; Sunday · 0.3 km from dinner area · 4 min walk</div>
+          <div class="anote">Arrive by 8:45 PM for front-row spot. The dragon head breathes real fire then sprays water at the crowd. Show runs 9:00–9:15 PM. This is the #1 free experience in Da Nang — do not miss it.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk from dinner · 0.3–0.5 km · 4–6 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free" style="font-size:16px;">FREE ⭐</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card">
+      <div class="day-hdr d4h">
+        <div class="day-num">4</div>
+        <div class="day-meta">
+          <h3>Sunday, August 9 — Son Tra + Free Morning · Depart 22:30</h3>
+          <p>Lady Buddha · My Khe Beach · Last Shopping · Farewell Dinner · Depart DAD 22:30</p>
+        </div>
+        <div class="day-zone"><div class="dz-lbl">Day Budget</div><div class="dz-amt">~₱900</div></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster A — Son Tra Peninsula (12 km from hotel · 25–30 min Grab Bike · grouped with nearby beach)</div>
+
+      <div class="act inc">
+        <div class="act-time">07:00</div>
+        <div class="act-body">
+          <div class="aname">🏨 Hotel Breakfast (Included) — Last One! Pack Bags After</div>
+          <div class="aaddr">Hotel checkout 12 PM · store bags after checkout</div>
+          <div class="anote">Eat well — airport food is expensive. Check out at noon; ask to store bags until departure. Confirm tonight's Grab to airport.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Included</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">08:00</div>
+        <div class="act-body">
+          <div class="aname">🗿 Son Tra Peninsula + Lady Buddha (Linh Ứng Pagoda)</div>
+          <div class="aaddr">Bán Đảo Sơn Trà · 12 km from hotel · 25–30 min Grab Bike</div>
+          <div class="anote">67-meter Lady Buddha — tallest in Central Vietnam. Panoramic Da Nang coastline view. Sacred Linh Ung Pagoda. ⚠ Modest dress required inside pagoda. Allow 1.5–2 hrs. Entry is FREE.</div>
+          <div class="atrans">
+            <span class="tp tk">🏍 Grab Bike (recommended) · 60,000–80,000 VND ≈ ₱157 · 25–30 min</span>
+            <span class="tp tg">🚗 Grab Car · 150,000–200,000 VND ≈ ₱449 · 20–25 min</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE entry</span><span class="cost-vnd">Transport extra</span></div>
+      </div>
+
+      <div class="cluster-label">📍 Cluster B — My Khe Beach + Hotel Area (back from Son Tra · walking distance from hotel)</div>
+
+      <div class="act free">
+        <div class="act-time">10:30</div>
+        <div class="act-body">
+          <div class="aname">🏖️ My Khe Beach — Final Morning Swim</div>
+          <div class="aaddr">Bãi Biển Mỹ Khê · 200 m from hotel · 2 min walk</div>
+          <div class="anote">Last swim! Beach chair 30,000–50,000 VND. Freshwater shower stalls on beach (free). Save energy for tonight's flight.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk · 200 m · 2 min · FREE</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">12:00</div>
+        <div class="act-body">
+          <div class="aname">🏨 Hotel Checkout · Store Bags</div>
+          <div class="aaddr">Your hotel · bags held until ~9 PM</div>
+          <div class="anote">Standard 12 PM checkout. Ask to hold luggage until departure. Tip helpful staff 20,000–50,000 VND if desired.</div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Hotel incl.</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">12:30</div>
+        <div class="act-body">
+          <div class="aname">🍜 Lunch — Cơm Gà (Da Nang Chicken Rice)</div>
+          <div class="aaddr">Bà Buội · 22 Hoàng Diệu, Hải Châu · 4 km · 10 min Grab Bike</div>
+          <div class="anote">Turmeric rice, shredded chicken, pickled papaya, ginger fish sauce. Light and satisfying last meal. 40,000–55,000 VND + soup + drink = ~80,000 VND.</div>
+          <div class="atrans">
+            <span class="tp tk">🏍 Grab Bike · 15,000–25,000 VND · 10 min</span>
+            <span class="tp tw">🚶 Walk · 4 km · 35–40 min · FREE</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱180</span><span class="cost-vnd">~80,000 VND</span></div>
+      </div>
+
+      <div class="act free">
+        <div class="act-time">14:00</div>
+        <div class="act-body">
+          <div class="aname">🛍️ Final Shopping · Han Market (if not done Day 1)</div>
+          <div class="aaddr">119 Trần Phú · 4.5 km · 10 min Grab Bike</div>
+          <div class="anote">Last chance for Vietnamese drip coffee, dried mango, souvenirs. Budget ₱500–₱1,500. Short Grab Bike or walk.</div>
+          <div class="atrans">
+            <span class="tp tk">🏍 Grab Bike · 20,000–30,000 VND · 10 min</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php free">FREE entry</span><span class="cost-note">Shopping extra</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">17:30</div>
+        <div class="act-body">
+          <div class="aname">🍽️ Farewell Dinner — Airport Area</div>
+          <div class="aaddr">Near Da Nang Airport or hotel area</div>
+          <div class="anote">Light pre-flight meal. Rice + soup combo 60,000–80,000 VND or airport restaurant after check-in. Avoid heavy food before a 2-hr flight.</div>
+          <div class="atrans"><span class="tp tw">🚶 Walk if nearby · or Grab Bike</span></div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱448</span><span class="cost-vnd">~200,000 VND</span></div>
+      </div>
+
+      <div class="act">
+        <div class="act-time">19:30</div>
+        <div class="act-body">
+          <div class="aname">🎒 Collect Bags + Head to Airport</div>
+          <div class="aaddr">Your hotel → Da Nang Airport (DAD) · 3–5 km · 10–15 min</div>
+          <div class="anote">Pick up stored bags. Grab Car to airport — no surcharge on outbound. Be at airport by 20:00 for 22:30 flight (2+ hrs early for international).</div>
+          <div class="atrans">
+            <span class="tp tg">🚗 Grab Car · 95,000–130,000 VND ≈ ₱215 · 10–15 min</span>
+            <span class="tp" style="background:#fef2f2;color:#c62828;font-size:10px;">⚠ No budget alt at night with luggage</span>
+          </div>
+        </div>
+        <div class="act-cost"><span class="cost-php red">₱215</span><span class="cost-vnd">~95,000 VND</span></div>
+      </div>
+
+      <div class="act inc">
+        <div class="act-time">22:30</div>
+        <div class="act-body">
+          <div class="aname">✈️ Depart Da Nang (DAD) → Manila (MNL)</div>
+          <div class="aaddr">Cebu Pacific 5J5757 · Departs 22:30 · Arrives Manila 02:15+1 (Mon, Aug 10)</div>
+          <div class="anote">4 days of amazing experiences — Lady Buddha, Hoi An ancient town, Ba Na Hills Golden Bridge, Dragon Bridge fire show, world-class street food. Welcome home!</div>
+        </div>
+        <div class="act-cost"><span class="cost-php inc">Return fare incl.</span></div>
+      </div>
+    </div>
+  </div><!-- end itinerary -->
+
+  <!-- ══ TAB 3: TRANSPORT ══ -->
+  <div id="tab-transport" class="tab-content">
+    <div style="background:#fff3cd;border:1.5px solid #fcd34d;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:#78350f;">
+      <strong>⚠ Note on Train:</strong> Vietnam's national railway PASSES THROUGH Da Nang station but there is <strong>NO train to Hoi An</strong> (no station) and <strong>NO urban metro within Da Nang city</strong>. Local transport options are Grab, Public Bus, Shuttle Bus, Xe Om/Grab Bike, Bicycle, or Walk.
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="ttable">
+      <thead><tr>
+        <th style="width:15%;">Leg / Route</th><th style="width:10%;">Day & Time</th>
+        <th style="width:16%;">🚗 Grab Car</th><th style="width:13%;">🏍 Grab Bike / Xe Om</th>
+        <th style="width:15%;">🚌 Public Bus</th><th style="width:15%;">🚌 Shuttle / Other</th>
+        <th style="width:10%;">🚲 Bicycle / 🚶 Walk</th><th style="width:16%;">✅ Budget Verdict</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><div class="lname">✈ Airport → Hotel</div><div class="ldist">3 km · 10–15 min</div></td><td>Day 1<br>08:00</td>
+          <td><span class="opt ob">✅ 160,000 VND<br><strong>₱360</strong> · 10–15 min</span><div style="font-size:10px;color:#94a3b8;margin-top:3px;">+30,000 VND surcharge</div></td>
+          <td><span class="opt on">❌ Unsafe at arrival<br>with luggage</span></td>
+          <td><span class="opt on">❌ No direct bus<br>at this hour</span></td>
+          <td><span class="opt on">❌ N/A</span></td>
+          <td><span class="opt on">❌ Too far w/ bags</span></td>
+          <td><span class="opt ov">✅ Grab Car<br><strong>₱360</strong> · Only option</span></td>
+        </tr>
+        <tr><td><div class="lname">🗿 Hotel → Son Tra</div><div class="ldist">12 km · Day 4 AM</div></td><td>Day 4<br>08:00</td>
+          <td><span class="opt om">🔵 150,000–200,000 VND<br><strong>₱337–₱449</strong> · 20–25 min</span></td>
+          <td><span class="opt ob">✅ 60,000–80,000 VND<br><strong>₱135–₱180</strong> · 25–30 min</span></td>
+          <td><span class="opt on">❌ No direct bus</span></td>
+          <td><span class="opt on">❌ N/A</span></td>
+          <td><span class="opt on">❌ 12 km too far</span></td>
+          <td><span class="opt ov">✅ Grab Bike<br><strong>₱157</strong> · Saves ₱292</span></td>
+        </tr>
+        <tr><td><div class="lname">🏮 Hotel → Hoi An</div><div class="ldist">28–30 km · Day 2</div></td><td>Day 2<br>06:30</td>
+          <td><span class="opt ow">⚠ 350,000–400,000 VND<br><strong>₱786–₱899</strong> · 40–45 min</span></td>
+          <td><span class="opt on">❌ Not practical<br>30 km inter-city</span></td>
+          <td><span class="opt ob">✅ Bus LK02<br>20,000–30,000 VND<br><strong>₱45–₱68</strong> · 75–90 min<br>Every 30–60 min, 5:45AM</span></td>
+          <td><span class="opt om">🔵 Shared Limousine<br>100,000–120,000 VND<br><strong>₱225–₱270</strong> · 35–45 min</span></td>
+          <td><span class="opt on">❌ 30 km too far</span></td>
+          <td><span class="opt ov">✅ Public Bus<br><strong>₱68</strong> · Saves ₱831</span></td>
+        </tr>
+        <tr><td><div class="lname">🚲 Within Hoi An</div><div class="ldist">2–4 km total</div></td><td>Day 2<br>All morning</td>
+          <td><span class="opt ow">⚠ 25,000–80,000/hop<br><strong>₱56–₱180</strong><br>Old town too narrow</span></td>
+          <td><span class="opt om">🔵 Xe Om/Grab Bike<br>20,000–40,000/hop<br><strong>₱45–₱90</strong></span></td>
+          <td><span class="opt on">❌ No inner-town bus</span></td>
+          <td><span class="opt on">⚠ E-cart <strong>₱1,125/hr</strong><br>Too expensive solo</span></td>
+          <td><span class="opt ob">✅ Bicycle <strong>₱101</strong>/half-day<br>+ Walk = FREE<br>Old town is flat!</span></td>
+          <td><span class="opt ov">✅ Bicycle + Walk<br><strong>₱101</strong> covers all</span></td>
+        </tr>
+        <tr><td><div class="lname">🏮 Hoi An → Da Nang</div><div class="ldist">28–30 km · Day 2</div></td><td>Day 2<br>12:45</td>
+          <td><span class="opt ow">⚠ 350,000–400,000 VND<br><strong>₱786–₱899</strong></span></td>
+          <td><span class="opt on">❌ Not practical</span></td>
+          <td><span class="opt ob">✅ Bus LK02<br>20,000–30,000 VND<br><strong>₱45–₱68</strong> · 75–90 min<br>Last bus ~6:00 PM</span></td>
+          <td><span class="opt om">🔵 Limousine<br>100,000–120,000 VND<br><strong>₱225–₱270</strong></span></td>
+          <td><span class="opt on">❌ Too far</span></td>
+          <td><span class="opt ov">✅ Public Bus<br><strong>₱68</strong> · Saves ₱711</span></td>
+        </tr>
+        <tr><td><div class="lname">🏙 Da Nang City Circuit<br>Han Market → Pink Church → APEC → Dragon Bridge</div><div class="ldist">1.8 km total</div></td><td>Day 1 PM<br>&amp; Day 2 PM</td>
+          <td><span class="opt om">🔵 25,000–50,000/hop<br><strong>₱56–₱113</strong></span></td>
+          <td><span class="opt ob">✅ Grab Bike<br>15,000–25,000/hop<br><strong>₱34–₱56</strong> · 7–10 min</span></td>
+          <td><span class="opt on">❌ Not convenient</span></td>
+          <td><span class="opt on">❌ N/A</span></td>
+          <td><span class="opt ob">✅ WALK = FREE<br>Han→Pink: 0.3km, 3min<br>Pink→APEC: 0.7km, 8min<br>APEC→Dragon: 0.8km, 10min<br><strong>Total: 1.8km · 25min · ₱0</strong></span></td>
+          <td><span class="opt ov">✅ Walk entire circuit<br><strong>₱0</strong> · 25 min</span></td>
+        </tr>
+        <tr><td><div class="lname">🏔 Hotel ↔ Ba Na Hills RT</div><div class="ldist">30 km west · Day 3</div></td><td>Day 3<br>07:30</td>
+          <td><span class="opt ow">⚠ ~900,000 VND RT<br><strong>₱2,018</strong> · 2 one-way rides<br>Return unreliable!</span></td>
+          <td><span class="opt on">❌ 30 km mountain road<br>not safe motorbike</span></td>
+          <td><span class="opt on">❌ No direct bus</span></td>
+          <td><span class="opt ob">✅ Shared Shuttle RT<br>170,000–200,000 VND<br><strong>₱382–₱449</strong> · 50–60 min<br>Pickup 07:30 · Return 15:30<br>Pre-book via Klook!</span></td>
+          <td><span class="opt on">❌ N/A</span></td>
+          <td><span class="opt ov">✅ Shared Shuttle<br><strong>₱449</strong> RT<br>Saves ₱1,569!</span></td>
+        </tr>
+        <tr><td><div class="lname">✈ Hotel → Airport</div><div class="ldist">3–5 km · Night</div></td><td>Day 4<br>20:00</td>
+          <td><span class="opt ob">✅ 95,000–130,000 VND<br><strong>₱213–₱292</strong> · 10–15 min</span></td>
+          <td><span class="opt on">❌ Not with luggage</span></td>
+          <td><span class="opt on">❌ No service<br>at this hour</span></td>
+          <td><span class="opt on">❌ N/A</span></td>
+          <td><span class="opt on">❌ Too far w/ bags</span></td>
+          <td><span class="opt ov">✅ Grab Car<br><strong>₱215</strong> · Depart by 20:00</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:#166534;">
+      <strong>💰 Budget Transport Total: ₱1,372</strong> &nbsp;vs&nbsp; <span style="color:#c62828;font-weight:700;">All-Grab: ₱4,526</span> &nbsp;=&nbsp; <strong style="font-size:14px;">SAVES ₱3,154</strong>
+      <div style="font-size:11px;color:#475569;margin-top:4px;">Grab Car (airport arrivals/departure) + Grab Bike (Son Tra + city hops) + Shared Shuttle RT (Ba Na Hills) + Public Bus ×2 (Hoi An both ways) + Bicycle (Hoi An) + Walk (Da Nang city circuit, beaches, Dragon Bridge)</div>
+    </div>
+  </div>
+
+  <!-- ══ TAB 4: FOOD ══ -->
+  <div id="tab-food" class="tab-content">
+    <div class="food-grid">
+      <div class="fcard">
+        <div class="fcard-hdr"><span style="font-size:22px;">🇻🇳</span><div><div style="font-size:14px;font-weight:800;color:#0d3b66;">Da Nang Specialties</div><div style="font-size:11px;color:#94a3b8;">Only authentic in Da Nang</div></div></div>
+        <div class="fitem"><span class="fitem-price">₱68–₱101<small>30,000–45,000 VND</small></span><div class="fitem-name">🍜 Bún Chả Cá</div><div class="fitem-where">Nam Danh · 78 Trần Quốc Toản, Mỹ Khê</div><div class="fitem-desc">Fish cake noodle soup — Da Nang's #1 signature dish. Tomato broth, fresh fish cakes, vermicelli. Open until midnight.</div></div>
+        <div class="fitem"><span class="fitem-price">₱56–₱79<small>25,000–35,000 VND</small></span><div class="fitem-name">🍝 Mì Quảng</div><div class="fitem-where">Mì Quảng Bà Mua · 19 Trần Bình Trọng</div><div class="fitem-desc">Thick turmeric noodles with pork, shrimp, quail egg, rice crackers. A Da Nang staple — filling and unique.</div></div>
+        <div class="fitem"><span class="fitem-price">₱79–₱124<small>35,000–55,000 VND</small></span><div class="fitem-name">🍗 Cơm Gà Đà Nẵng</div><div class="fitem-where">Bà Buội · 22 Hoàng Diệu, Hải Châu</div><div class="fitem-desc">Turmeric rice with shredded chicken, pickled papaya, ginger fish sauce. Perfect light pre-flight farewell meal.</div></div>
+        <div class="fitem"><span class="fitem-price">₱23–₱56<small>10,000–25,000 VND</small></span><div class="fitem-name">🥖 Bánh Mì</div><div class="fitem-where">Street carts near My Khe Beach · morning</div><div class="fitem-desc">Crispy baguette with pâté, cold cuts, pickled veg. Best cheap breakfast. Pair with iced coffee.</div></div>
+        <div class="fitem"><span class="fitem-price">₱56–₱90<small>25,000–40,000 VND</small></span><div class="fitem-name">☕ Cà Phê Sữa Đá</div><div class="fitem-where">Any street cart or local café</div><div class="fitem-desc">Vietnamese drip coffee over condensed milk and ice. Strong, sweet, essential. Have one every single day.</div></div>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-hdr"><span style="font-size:22px;">🏮</span><div><div style="font-size:14px;font-weight:800;color:#0d3b66;">Hoi An Specialties</div><div style="font-size:11px;color:#94a3b8;">Only authentic here — must-try</div></div></div>
+        <div class="fitem"><span class="fitem-price">₱56–₱113<small>25,000–50,000 VND</small></span><div class="fitem-name">🍜 Cao Lầu</div><div class="fitem-where">Thanh Cao Lau · 26 Thái Phiên St (2 min walk from Japanese Bridge)</div><div class="fitem-desc">Uses water ONLY from Cham Island wells — impossible to replicate elsewhere. Thick rice noodles, char siu pork, bean sprouts, rice crackers.</div></div>
+        <div class="fitem"><span class="fitem-price">₱56–₱79<small>25,000–35,000 VND</small></span><div class="fitem-name">🥟 White Rose Dumplings (Bánh Bao Vạc)</div><div class="fitem-where">White Rose Restaurant · 533 Hai Bà Trưng St</div><div class="fitem-desc">Translucent steamed shrimp dumplings. Made by one single family in Hoi An — their secret recipe since 1975.</div></div>
+        <div class="fitem"><span class="fitem-price">₱56–₱79<small>25,000–35,000 VND</small></span><div class="fitem-name">🥖 Bánh Mì Phượng</div><div class="fitem-where">2B Phan Châu Trinh Street · always a queue</div><div class="fitem-desc">Anthony Bourdain: "the best sandwich in the world." Queue is part of the experience. Order the classic.</div></div>
+        <div class="fitem"><span class="fitem-price">₱45–₱90<small>20,000–40,000 VND</small></span><div class="fitem-name">🥗 Hoi An Central Market Stalls</div><div class="fitem-where">Chợ Hội An · Trần Phú St</div><div class="fitem-desc">Cheapest authentic food in Hoi An. Local vendors, point-and-order. Cash only. More food for less money than any tourist restaurant.</div></div>
+        <div class="fitem"><span class="fitem-price">₱34–₱56<small>15,000–25,000 VND</small></span><div class="fitem-name">🥥 Nước Dừa (Fresh Coconut)</div><div class="fitem-where">Street vendors throughout Hoi An old town</div><div class="fitem-desc">Straight from the shell with a straw. August heat means you'll want one every hour. Best: Siamese coconuts.</div></div>
+      </div>
+
+      <div class="fcard">
+        <div class="fcard-hdr"><span style="font-size:22px;">💡</span><div><div style="font-size:14px;font-weight:800;color:#0d3b66;">Food Budget Tips</div><div style="font-size:11px;color:#94a3b8;">Eat well for less</div></div></div>
+        <div style="font-size:12px;color:#475569;line-height:1.7;">
+          <div style="padding:6px 0;border-bottom:1px dashed #f1f5f9;"><strong style="color:#0d3b66;">🔍 Find the locals first</strong><br>Tourist restaurants near old town Hoi An charge 3–5× local prices. Walk 2 streets back to where Vietnamese families eat — same dish, fraction of the cost.</div>
+          <div style="padding:6px 0;border-bottom:1px dashed #f1f5f9;"><strong style="color:#0d3b66;">🍺 Bia Hơi</strong><br>World's cheapest fresh-brewed beer: ₱23–₱45 per glass (10,000–20,000 VND). Brewed daily, light and refreshing. Available everywhere along the Han River.</div>
+          <div style="padding:6px 0;border-bottom:1px dashed #f1f5f9;"><strong style="color:#0d3b66;">☕ Coffee rule</strong><br>Never buy coffee at tourist cafés near Hoi An old town (₱135–₱180). Find a plastic-chair street cart (₱56–₱79). Exact same coffee at half the price.</div>
+          <div style="padding:6px 0;"><strong style="color:#0d3b66;">🍽️ Full day food budget (excl. hotel breakfast + Ba Na lunch)</strong><br>Conservative: 200,000–300,000 VND/day ≈ ₱450–₱675. Comfortable: 300,000–450,000 VND/day ≈ ₱675–₱1,013. Total 4 days out-of-pocket meals in this plan: ₱2,141.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page -->
+
+<div class="footer">
+  Da Nang 4D3N Complete Travel Guide · August 6–9, 2026 · Solo Traveler<br>
+  Price Data: May 6, 2026 · Exchange Rate: ₱1 = 444 VND · 1,000 VND = ₱2.25 · $1 = ₱57<br>
+  ⚠ Philippine Travel Tax ₱1,620 is MANDATORY and NOT included in airline ticket price · Pay via TIEZA.gov.ph or during Cebu Pacific booking<br>
+  Sources: Skyscanner [S1] · TripAdvisor [S3] · DanangTransfer.vn [S5] · BaNaHillsTickets.com [S7] · HoiAnMemoriesLand.com [S9] · HoiAnDayTrip.com [S10/S12] · CulturePhamTravel.com [S11] · Exchange-Rates.org [S13] · TIEZA.gov.ph [S14]
+</div>
+
+<script>
+function showTab(name, el) {
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
